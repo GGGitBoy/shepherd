@@ -17,7 +17,6 @@ import (
 	"github.com/rancher/types/factory"
 	controllergen "github.com/rancher/wrangler/pkg/controller-gen"
 	"github.com/rancher/wrangler/pkg/controller-gen/args"
-
 	capi "sigs.k8s.io/cluster-api/api/v1beta1"
 )
 

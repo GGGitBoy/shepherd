@@ -10,8 +10,10 @@ import (
 
 	"github.com/pkg/errors"
 	"github.com/rancher/norman/httperror"
+	"github.com/rancher/shepherd/clients/cvm"
 	frameworkDynamic "github.com/rancher/shepherd/clients/dynamic"
 	"github.com/rancher/shepherd/clients/ec2"
+	"github.com/rancher/shepherd/clients/huawei"
 	"github.com/rancher/shepherd/clients/rancher/catalog"
 	management "github.com/rancher/shepherd/clients/rancher/generated/management/v3"
 	v1 "github.com/rancher/shepherd/clients/rancher/v1"
@@ -279,6 +281,16 @@ func (c *Client) SwitchContext(context string, clientConfig *clientcmd.ClientCon
 // GetEC2Client is a helper function that instantiates an aws ec2 client to communicate with the ec2 instances on aws.
 func (c *Client) GetEC2Client() (*ec2.Client, error) {
 	return ec2.NewClient()
+}
+
+// GetCVMClient is a helper function that instantiates a tencent cvm client to communicate with the cvm instances on tencent.
+func (c *Client) GetCVMClient() (*cvm.Client, error) {
+	return cvm.NewClient()
+}
+
+// GetHuaweiClient is a helper function that instantiates a hwcloud ecs client to communicate with the ecs instances on hwcloud.
+func (c *Client) GetHuaweiClient() (*huawei.Client, error) {
+	return huawei.NewClient()
 }
 
 // GetManagementWatchInterface is a functions used to get a watch.Interface from a resource created by the Management Client.

@@ -2,6 +2,8 @@ package provisioning
 
 import (
 	"fmt"
+	"github.com/rancher/shepherd/extensions/nodes/cvm"
+	"github.com/rancher/shepherd/extensions/nodes/huawei"
 
 	"github.com/rancher/shepherd/clients/rancher"
 	"github.com/rancher/shepherd/extensions/nodes/ec2"
@@ -10,8 +12,10 @@ import (
 )
 
 const (
-	ec2NodeProviderName = "ec2"
-	fromConfig          = "config"
+	ec2NodeProviderName    = "ec2"
+	cvmNodeProviderName    = "cvm"
+	huaweiNodePorviderName = "huawei"
+	fromConfig             = "config"
 )
 
 type NodeCreationFunc func(client *rancher.Client, rolesPerPool []string, quantityPerPool []int32) (nodes []*nodes.Node, err error)
@@ -32,6 +36,18 @@ func ExternalNodeProviderSetup(providerType string) ExternalNodeProvider {
 			Name:             providerType,
 			NodeCreationFunc: ec2.CreateNodes,
 			NodeDeletionFunc: ec2.DeleteNodes,
+		}
+	case cvmNodeProviderName:
+		return ExternalNodeProvider{
+			Name:             providerType,
+			NodeCreationFunc: cvm.CreateNodes,
+			NodeDeletionFunc: cvm.DeleteNodes,
+		}
+	case huaweiNodePorviderName:
+		return ExternalNodeProvider{
+			Name:             providerType,
+			NodeCreationFunc: huawei.CreateNodes,
+			NodeDeletionFunc: huawei.DeleteNodes,
 		}
 	case fromConfig:
 		return ExternalNodeProvider{

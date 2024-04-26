@@ -14,10 +14,13 @@ const (
 	ClusterSpecBaseFieldDockerRootDir                                        = "dockerRootDir"
 	ClusterSpecBaseFieldEnableClusterAlerting                                = "enableClusterAlerting"
 	ClusterSpecBaseFieldEnableClusterMonitoring                              = "enableClusterMonitoring"
+	ClusterSpecBaseFieldEnableGPUManagement                                  = "enableGPUManagement"
 	ClusterSpecBaseFieldEnableNetworkPolicy                                  = "enableNetworkPolicy"
 	ClusterSpecBaseFieldFleetAgentDeploymentCustomization                    = "fleetAgentDeploymentCustomization"
+	ClusterSpecBaseFieldFluentdLogDir                                        = "fluentdLogDir"
 	ClusterSpecBaseFieldLocalClusterAuthEndpoint                             = "localClusterAuthEndpoint"
 	ClusterSpecBaseFieldRancherKubernetesEngineConfig                        = "rancherKubernetesEngineConfig"
+	ClusterSpecBaseFieldSystemDefaultRegistry                                = "systemDefaultRegistry"
 	ClusterSpecBaseFieldWindowsPreferedCluster                               = "windowsPreferedCluster"
 )
 
@@ -34,9 +37,12 @@ type ClusterSpecBase struct {
 	DockerRootDir                                        string                         `json:"dockerRootDir,omitempty" yaml:"dockerRootDir,omitempty"`
 	EnableClusterAlerting                                bool                           `json:"enableClusterAlerting,omitempty" yaml:"enableClusterAlerting,omitempty"`
 	EnableClusterMonitoring                              bool                           `json:"enableClusterMonitoring,omitempty" yaml:"enableClusterMonitoring,omitempty"`
+	EnableGPUManagement                                  bool                           `json:"enableGPUManagement,omitempty" yaml:"enableGPUManagement,omitempty"`
 	EnableNetworkPolicy                                  *bool                          `json:"enableNetworkPolicy,omitempty" yaml:"enableNetworkPolicy,omitempty"`
 	FleetAgentDeploymentCustomization                    *AgentDeploymentCustomization  `json:"fleetAgentDeploymentCustomization,omitempty" yaml:"fleetAgentDeploymentCustomization,omitempty"`
+	FluentdLogDir                                        string                         `json:"fluentdLogDir,omitempty" yaml:"fluentdLogDir,omitempty"`
 	LocalClusterAuthEndpoint                             *LocalClusterAuthEndpoint      `json:"localClusterAuthEndpoint,omitempty" yaml:"localClusterAuthEndpoint,omitempty"`
 	RancherKubernetesEngineConfig                        *RancherKubernetesEngineConfig `json:"rancherKubernetesEngineConfig,omitempty" yaml:"rancherKubernetesEngineConfig,omitempty"`
+	SystemDefaultRegistry                                string                         `json:"systemDefaultRegistry,omitempty" yaml:"systemDefaultRegistry,omitempty"`
 	WindowsPreferedCluster                               bool                           `json:"windowsPreferedCluster,omitempty" yaml:"windowsPreferedCluster,omitempty"`
 }

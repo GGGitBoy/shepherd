@@ -3,13 +3,11 @@ package charts
 import (
 	"time"
 
-	"github.com/rancher/shepherd/pkg/api/steve/catalog/types"
-
-	appv1 "k8s.io/api/apps/v1"
-
 	"github.com/rancher/shepherd/clients/rancher"
 	steveV1 "github.com/rancher/shepherd/clients/rancher/v1"
 	"github.com/rancher/shepherd/extensions/workloads/pods"
+	"github.com/rancher/shepherd/pkg/api/steve/catalog/types"
+	appv1 "k8s.io/api/apps/v1"
 	kwait "k8s.io/apimachinery/pkg/util/wait"
 )
 

@@ -4,6 +4,7 @@ const (
 	ClusterStatusType                                            = "clusterStatus"
 	ClusterStatusFieldAADClientCertSecret                        = "aadClientCertSecret"
 	ClusterStatusFieldAADClientSecret                            = "aadClientSecret"
+	ClusterStatusFieldACKStatus                                  = "ackStatus"
 	ClusterStatusFieldAKSStatus                                  = "aksStatus"
 	ClusterStatusFieldAPIEndpoint                                = "apiEndpoint"
 	ClusterStatusFieldAgentFeatures                              = "agentFeatures"
@@ -16,6 +17,7 @@ const (
 	ClusterStatusFieldAppliedSpec                                = "appliedSpec"
 	ClusterStatusFieldAuthImage                                  = "authImage"
 	ClusterStatusFieldCACert                                     = "caCert"
+	ClusterStatusFieldCCEStatus                                  = "cceStatus"
 	ClusterStatusFieldCapabilities                               = "capabilities"
 	ClusterStatusFieldCapacity                                   = "capacity"
 	ClusterStatusFieldCertificatesExpiration                     = "certificatesExpiration"
@@ -38,6 +40,7 @@ const (
 	ClusterStatusFieldRequested                                  = "requested"
 	ClusterStatusFieldS3CredentialSecret                         = "s3CredentialSecret"
 	ClusterStatusFieldServiceAccountTokenSecret                  = "serviceAccountTokenSecret"
+	ClusterStatusFieldTKEStatus                                  = "tkeStatus"
 	ClusterStatusFieldVersion                                    = "version"
 	ClusterStatusFieldVirtualCenterSecret                        = "virtualCenterSecret"
 	ClusterStatusFieldVsphereSecret                              = "vsphereSecret"
@@ -48,6 +51,7 @@ const (
 type ClusterStatus struct {
 	AADClientCertSecret                        string                        `json:"aadClientCertSecret,omitempty" yaml:"aadClientCertSecret,omitempty"`
 	AADClientSecret                            string                        `json:"aadClientSecret,omitempty" yaml:"aadClientSecret,omitempty"`
+	ACKStatus                                  *ACKStatus                    `json:"ackStatus,omitempty" yaml:"ackStatus,omitempty"`
 	AKSStatus                                  *AKSStatus                    `json:"aksStatus,omitempty" yaml:"aksStatus,omitempty"`
 	APIEndpoint                                string                        `json:"apiEndpoint,omitempty" yaml:"apiEndpoint,omitempty"`
 	AgentFeatures                              map[string]bool               `json:"agentFeatures,omitempty" yaml:"agentFeatures,omitempty"`
@@ -60,6 +64,7 @@ type ClusterStatus struct {
 	AppliedSpec                                *ClusterSpec                  `json:"appliedSpec,omitempty" yaml:"appliedSpec,omitempty"`
 	AuthImage                                  string                        `json:"authImage,omitempty" yaml:"authImage,omitempty"`
 	CACert                                     string                        `json:"caCert,omitempty" yaml:"caCert,omitempty"`
+	CCEStatus                                  *CCEStatus                    `json:"cceStatus,omitempty" yaml:"cceStatus,omitempty"`
 	Capabilities                               *Capabilities                 `json:"capabilities,omitempty" yaml:"capabilities,omitempty"`
 	Capacity                                   map[string]string             `json:"capacity,omitempty" yaml:"capacity,omitempty"`
 	CertificatesExpiration                     map[string]CertExpiration     `json:"certificatesExpiration,omitempty" yaml:"certificatesExpiration,omitempty"`
@@ -82,6 +87,7 @@ type ClusterStatus struct {
 	Requested                                  map[string]string             `json:"requested,omitempty" yaml:"requested,omitempty"`
 	S3CredentialSecret                         string                        `json:"s3CredentialSecret,omitempty" yaml:"s3CredentialSecret,omitempty"`
 	ServiceAccountTokenSecret                  string                        `json:"serviceAccountTokenSecret,omitempty" yaml:"serviceAccountTokenSecret,omitempty"`
+	TKEStatus                                  *TKEStatus                    `json:"tkeStatus,omitempty" yaml:"tkeStatus,omitempty"`
 	Version                                    *Info                         `json:"version,omitempty" yaml:"version,omitempty"`
 	VirtualCenterSecret                        string                        `json:"virtualCenterSecret,omitempty" yaml:"virtualCenterSecret,omitempty"`
 	VsphereSecret                              string                        `json:"vsphereSecret,omitempty" yaml:"vsphereSecret,omitempty"`

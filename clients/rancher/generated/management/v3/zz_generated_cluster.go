@@ -8,6 +8,8 @@ const (
 	ClusterType                                                      = "cluster"
 	ClusterFieldAADClientCertSecret                                  = "aadClientCertSecret"
 	ClusterFieldAADClientSecret                                      = "aadClientSecret"
+	ClusterFieldACKConfig                                            = "ackConfig"
+	ClusterFieldACKStatus                                            = "ackStatus"
 	ClusterFieldAKSConfig                                            = "aksConfig"
 	ClusterFieldAKSStatus                                            = "aksStatus"
 	ClusterFieldAPIEndpoint                                          = "apiEndpoint"
@@ -24,6 +26,8 @@ const (
 	ClusterFieldAppliedSpec                                          = "appliedSpec"
 	ClusterFieldAuthImage                                            = "authImage"
 	ClusterFieldCACert                                               = "caCert"
+	ClusterFieldCCEConfig                                            = "cceConfig"
+	ClusterFieldCCEStatus                                            = "cceStatus"
 	ClusterFieldCapabilities                                         = "capabilities"
 	ClusterFieldCapacity                                             = "capacity"
 	ClusterFieldCertificatesExpiration                               = "certificatesExpiration"
@@ -50,10 +54,13 @@ const (
 	ClusterFieldEKSStatus                                            = "eksStatus"
 	ClusterFieldEnableClusterAlerting                                = "enableClusterAlerting"
 	ClusterFieldEnableClusterMonitoring                              = "enableClusterMonitoring"
+	ClusterFieldEnableGPUManagement                                  = "enableGPUManagement"
 	ClusterFieldEnableNetworkPolicy                                  = "enableNetworkPolicy"
+	ClusterFieldExternalFlags                                        = "externalFlags"
 	ClusterFieldFailedSpec                                           = "failedSpec"
 	ClusterFieldFleetAgentDeploymentCustomization                    = "fleetAgentDeploymentCustomization"
 	ClusterFieldFleetWorkspaceName                                   = "fleetWorkspaceName"
+	ClusterFieldFluentdLogDir                                        = "fluentdLogDir"
 	ClusterFieldGKEConfig                                            = "gkeConfig"
 	ClusterFieldGKEStatus                                            = "gkeStatus"
 	ClusterFieldImportedConfig                                       = "importedConfig"
@@ -79,6 +86,9 @@ const (
 	ClusterFieldS3CredentialSecret                                   = "s3CredentialSecret"
 	ClusterFieldServiceAccountTokenSecret                            = "serviceAccountTokenSecret"
 	ClusterFieldState                                                = "state"
+	ClusterFieldSystemDefaultRegistry                                = "systemDefaultRegistry"
+	ClusterFieldTKEConfig                                            = "tkeConfig"
+	ClusterFieldTKEStatus                                            = "tkeStatus"
 	ClusterFieldTransitioning                                        = "transitioning"
 	ClusterFieldTransitioningMessage                                 = "transitioningMessage"
 	ClusterFieldUUID                                                 = "uuid"
@@ -94,6 +104,8 @@ type Cluster struct {
 	types.Resource
 	AADClientCertSecret                                  string                         `json:"aadClientCertSecret,omitempty" yaml:"aadClientCertSecret,omitempty"`
 	AADClientSecret                                      string                         `json:"aadClientSecret,omitempty" yaml:"aadClientSecret,omitempty"`
+	ACKConfig                                            *ACKClusterConfigSpec          `json:"ackConfig,omitempty" yaml:"ackConfig,omitempty"`
+	ACKStatus                                            *ACKStatus                     `json:"ackStatus,omitempty" yaml:"ackStatus,omitempty"`
 	AKSConfig                                            *AKSClusterConfigSpec          `json:"aksConfig,omitempty" yaml:"aksConfig,omitempty"`
 	AKSStatus                                            *AKSStatus                     `json:"aksStatus,omitempty" yaml:"aksStatus,omitempty"`
 	APIEndpoint                                          string                         `json:"apiEndpoint,omitempty" yaml:"apiEndpoint,omitempty"`
@@ -110,6 +122,8 @@ type Cluster struct {
 	AppliedSpec                                          *ClusterSpec                   `json:"appliedSpec,omitempty" yaml:"appliedSpec,omitempty"`
 	AuthImage                                            string                         `json:"authImage,omitempty" yaml:"authImage,omitempty"`
 	CACert                                               string                         `json:"caCert,omitempty" yaml:"caCert,omitempty"`
+	CCEConfig                                            *CCEClusterConfigSpec          `json:"cceConfig,omitempty" yaml:"cceConfig,omitempty"`
+	CCEStatus                                            *CCEStatus                     `json:"cceStatus,omitempty" yaml:"cceStatus,omitempty"`
 	Capabilities                                         *Capabilities                  `json:"capabilities,omitempty" yaml:"capabilities,omitempty"`
 	Capacity                                             map[string]string              `json:"capacity,omitempty" yaml:"capacity,omitempty"`
 	CertificatesExpiration                               map[string]CertExpiration      `json:"certificatesExpiration,omitempty" yaml:"certificatesExpiration,omitempty"`
@@ -136,10 +150,13 @@ type Cluster struct {
 	EKSStatus                                            *EKSStatus                     `json:"eksStatus,omitempty" yaml:"eksStatus,omitempty"`
 	EnableClusterAlerting                                bool                           `json:"enableClusterAlerting,omitempty" yaml:"enableClusterAlerting,omitempty"`
 	EnableClusterMonitoring                              bool                           `json:"enableClusterMonitoring,omitempty" yaml:"enableClusterMonitoring,omitempty"`
+	EnableGPUManagement                                  bool                           `json:"enableGPUManagement,omitempty" yaml:"enableGPUManagement,omitempty"`
 	EnableNetworkPolicy                                  *bool                          `json:"enableNetworkPolicy,omitempty" yaml:"enableNetworkPolicy,omitempty"`
+	ExternalFlags                                        *ExternalFlags                 `json:"externalFlags,omitempty" yaml:"externalFlags,omitempty"`
 	FailedSpec                                           *ClusterSpec                   `json:"failedSpec,omitempty" yaml:"failedSpec,omitempty"`
 	FleetAgentDeploymentCustomization                    *AgentDeploymentCustomization  `json:"fleetAgentDeploymentCustomization,omitempty" yaml:"fleetAgentDeploymentCustomization,omitempty"`
 	FleetWorkspaceName                                   string                         `json:"fleetWorkspaceName,omitempty" yaml:"fleetWorkspaceName,omitempty"`
+	FluentdLogDir                                        string                         `json:"fluentdLogDir,omitempty" yaml:"fluentdLogDir,omitempty"`
 	GKEConfig                                            *GKEClusterConfigSpec          `json:"gkeConfig,omitempty" yaml:"gkeConfig,omitempty"`
 	GKEStatus                                            *GKEStatus                     `json:"gkeStatus,omitempty" yaml:"gkeStatus,omitempty"`
 	ImportedConfig                                       *ImportedConfig                `json:"importedConfig,omitempty" yaml:"importedConfig,omitempty"`
@@ -165,6 +182,9 @@ type Cluster struct {
 	S3CredentialSecret                                   string                         `json:"s3CredentialSecret,omitempty" yaml:"s3CredentialSecret,omitempty"`
 	ServiceAccountTokenSecret                            string                         `json:"serviceAccountTokenSecret,omitempty" yaml:"serviceAccountTokenSecret,omitempty"`
 	State                                                string                         `json:"state,omitempty" yaml:"state,omitempty"`
+	SystemDefaultRegistry                                string                         `json:"systemDefaultRegistry,omitempty" yaml:"systemDefaultRegistry,omitempty"`
+	TKEConfig                                            *TKEClusterConfigSpec          `json:"tkeConfig,omitempty" yaml:"tkeConfig,omitempty"`
+	TKEStatus                                            *TKEStatus                     `json:"tkeStatus,omitempty" yaml:"tkeStatus,omitempty"`
 	Transitioning                                        string                         `json:"transitioning,omitempty" yaml:"transitioning,omitempty"`
 	TransitioningMessage                                 string                         `json:"transitioningMessage,omitempty" yaml:"transitioningMessage,omitempty"`
 	UUID                                                 string                         `json:"uuid,omitempty" yaml:"uuid,omitempty"`
