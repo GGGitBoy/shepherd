@@ -21,7 +21,7 @@ const (
 )
 
 var backoff = wait.Backoff{
-	Duration: 30 * time.Second,
+	Duration: 60 * time.Second,
 	Steps:    12,
 }
 
