@@ -22,7 +22,7 @@ const (
 
 var backoff = wait.Backoff{
 	Duration: 60 * time.Second,
-	Steps:    20,
+	Steps:    30,
 }
 
 // CreateNodes creates `quantityPerPool[n]` number of cvm instances
