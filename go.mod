@@ -19,8 +19,8 @@ require (
 	github.com/cnrancher/cce-operator v0.4.4
 	github.com/huaweicloud/huaweicloud-sdk-go-v3 v0.1.69
 	github.com/sirupsen/logrus v1.9.3
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.715
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v1.0.715
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.986
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v1.0.986
 )
 
 require (
